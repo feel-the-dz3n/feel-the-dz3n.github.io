@@ -1,7 +1,6 @@
 img.myphoto {
     float: left;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 50px;
     margin-bottom: 30px;
     border-radius: 50%;
     max-width: 175px;
