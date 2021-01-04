@@ -7,6 +7,20 @@ img.myphoto {
     max-height: 175px;
 }
 
+.project {
+    padding: 15px;
+    margin: 10px;
+    background-color: #1f1f1f;
+    width: 250px;
+    /*float: left;*/
+    display:inline-block;
+}
+
+.screenshot {
+    max-width: 350px;
+    max-height: 200px;
+}
+
 a {
     color: #61a1a1;
 }
