@@ -1,10 +1,27 @@
 img.myphoto {
-    float: left;
-    margin-right: 50px;
-    margin-bottom: 30px;
     border-radius: 50%;
-    max-width: 175px;
-    max-height: 175px;
+    width: 70px;
+    height: 70px;
+    float: left;
+}
+
+.avatar-section {
+    text-align: left;
+}
+
+.avatar-text {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.header-left-content {
+    float: left;
+    margin: 15px;
+}
+
+.header-right-content {
+    float: right;
+    margin: 15px;
 }
 
 .project {
@@ -26,8 +43,15 @@ a {
     color: #61a1a1;
 }
 
-section {
+clean {
     clear: both;
+}
+
+main {
+    padding-top: 150px;
+}
+
+section {
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 15px;
@@ -35,15 +59,17 @@ section {
 }
 
 header {
-    background-color: #1f1f1f;
+    background-color: #1c1c1c;
     width: 100%;
     margin: 0;
     padding: 0;
     border: none;
     overflow: auto;
+    position: fixed;
 }
 
 body {
+    position: relative;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #0f0f0f;
     color: #cccccc;
