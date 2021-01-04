@@ -5,6 +5,10 @@ img.myphoto {
     border-radius: 50%;
 }
 
+a {
+    color: #61a1a1;
+}
+
 section {
     padding: 5px;
 }
