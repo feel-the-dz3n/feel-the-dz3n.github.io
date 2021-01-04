@@ -100,7 +100,8 @@ section {
 
 header {
     background: linear-gradient(rgb(96, 113, 211), rgba(131, 103, 196, 0.705));
-    color: black;
+    color: rgba(255, 255, 255, 0.986);
+    text-shadow: 0 0 2px black;
     width: 100%;
     height: 115px;
     margin: 0;
