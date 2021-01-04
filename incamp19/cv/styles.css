@@ -13,7 +13,8 @@ img.myphoto {
     background-color: #1f1f1f;
     width: 250px;
     /*float: left;*/
-    display:inline-block;
+    display: inline-block;
+    border-radius: 3%;
 }
 
 .screenshot {
