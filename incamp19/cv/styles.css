@@ -47,11 +47,18 @@ img.myphoto {
     margin: 15px;
 }
 
-.project {
+.project-badge {
+    width: 250px;
+}
+
+.study-badge {
+    width: auto;
+}
+
+.inline-badge {
     padding: 15px;
     margin: 10px;
     background-color: #1f1f1f;
-    width: 250px;
     /*float: left;*/
     display: inline-block;
     border-radius: 10px;
