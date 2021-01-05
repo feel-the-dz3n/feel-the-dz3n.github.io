@@ -28,14 +28,15 @@
         <main>
             <nav class="badge-style">
                 <ul>
-                    <li>Home Page</li>
-                    <li>Another Page</li>
-                    <li>Incredible Page</li>
-                    <li>Beatiful Page</li>
+                    <li><a href="/">Home Page</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contacts">Contacts</a></li>
                 </ul>
             </nav> 
             <div class="main-content">
-                <section>
+                <section id="education">
                     <h2 class="centered">Education</h2>
 
                     <center>
@@ -74,76 +75,39 @@
                     </center>
                 </section>
 
-                <section class="centered-content">
+                <section id="skills">
                     <h2 class="centered">Hard Skills</h2>
-                    <ul>
-                        <li>Google, Stackoverflow</li>
-                        <li>Git</li>
-                        <li>Linux, Bash</li>
-                        <li>SQL
-                            <ul>
-                                <li>MySQL</li>
-                                <li>PostgreSQL</li>
-                            </ul>
-                        </li>
-                        <li>ORM</li>
-                        <li>.NET
-                            <ul>
-                                <li>.NET Framework</li>
-                                <li>.NET Core/5+</li>
-                                <li>C#</li>
-                                <li>Entity Framework</li>
-                                <li>NuGet</li>
-                                <li>ASP .NET</li>
-                                <li>MSTest</li>
-                                <li>XUnit</li>
-                                <li>WinForms/WPF/UWP</li>  
-                            </ul>
-                        </li>
-                        <li>Java
-                            <ul>
-                                <li>Spring</li>
-                                <li>Hibernate</li>
-                                <li>JDBC</li>
-                                <li>Maven</li>
-                                <li>Gradle</li>
-                                <li>JUnit</li>
-                            </ul>
-                        </li>
-                        <li>Web
-                            <ul>
-                                <li>HTML</li>
-                                <li>CSS</li>
-                                <li>JavaScript</li>
-                            </ul>
-                        </li>
-                        <li>OOP
-                            <ul>
-                                <li>Patterns</li>
-                                <li>SOLID</li>
-                                <li>GRASP</li>
-                                <li>Unit Tests
-                                    <ul>
-                                        <li>TDD</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>PHP</li>
-                        <li>English Language</li>
-                    </ul>
-                </section>
-                <section class="centered-content">
-                    <h2 class="centered">Soft Skills (and more)</h2>
-                    <ul>
-                        <li>I like to work</li>
-                        <li>I like my profession</li>
-                        <li>Ability to analyze</li>
-                        <li>Teamwork skills</li>
-                        <li>No bad habits</li>
-                    </ul>
+                    <center>
+                        <div class="container">
+                            <div class="inline-badge"><strong>Java</strong><p>Spring<br>Hibernate<br>JDBC<br>Maven<br>Gradle<br>JUnit</p></div>
+                            <div class="inline-badge"><strong>.NET/C#</strong><p>.NET Framework<br>.NET Core/5+<br>C#<br>Entity Framework<br>NuGet<br>ASP .NET<br>MSTest<br>XUnit</p></div>
+                            <div class="inline-badge"><strong>OOP</strong><p>Patterns<br>Unit Testing<br>GRASP<br>SOLID<br>TDD</p></div>
+                            <div class="inline-badge"><strong>And more</strong><p>SQL<br>Linux<br>Bash<br>Git<br>PHP<br>Web</p></div>
+                        </div>
+                    </center>
                 </section>
                 <section>
+                    <h2 class="centered">Soft Skills</h2>
+                    <center>
+                        <div class="container">
+                            <div class="inline-badge badge-style red-badge">
+                                <h3>Teamwork</h3>
+                                <p>An important thing.</p>
+                            </div>
+
+                            <div class="inline-badge badge-style green-badge">
+                                <h3>Ability to analyze</h3>
+                                <p>An important thing.</p>
+                            </div>
+
+                            <div class="inline-badge badge-style blue-badge">
+                                <h3>Love my work</h3>
+                                <p>An important thing.</p>
+                            </div>
+                        </div>
+                    </center>
+                </section>
+                <section id="projects">
                     <h2 class="centered">Projects</h2>
                     <center>
                         <div class="container">
@@ -172,7 +136,7 @@
                 </section>
 
                 
-                <section class="centered-content">
+                <section class="centered-content" id="contacts">
                     <h2 class="centered">Contacts & Links</h2>
                     <ul>
                         <li>E-mail: yanet.prod@gmail.com</li>
