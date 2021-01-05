@@ -81,7 +81,7 @@ ul {
 }
 
 a {
-    color: #61a1a1;
+    color: #88b8b8;
 }
 
 .clean {
@@ -115,27 +115,35 @@ header {
 }
 
 .green-badge {
-    background-color: rgb(43, 136, 35);
-    color:rgba(255, 255, 255, 0.925);
+    border-radius: 10px;
+    background-color: rgba(43, 136, 35, 0.664);
+    color:rgb(255, 255, 255);
 }
 
 .red-badge {
-    background-color: rgb(136, 55, 35);
-    color:rgba(255, 255, 255, 0.925);
+    border-radius: 10px;
+    background-color: rgb(136, 55, 35, 0.664);
+    color:rgb(255, 255, 255);
 }
 
 .blue-badge {
-    background-color: rgb(35, 124, 136);
-    color:rgba(255, 255, 255, 0.925);
+    border-radius: 10px;
+    background-color: rgba(35, 75, 136, 0.664);
+    color:rgb(255, 255, 255);
 }
 
-.small-absolute-badge {
+.right-upper-badge {
     padding: 15px;
-    border-radius: 10px;
     position: absolute;
     top: 0;
     right: 0;
-    opacity: 0.8;
+}
+
+.right-bottom-badge {
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 body {
