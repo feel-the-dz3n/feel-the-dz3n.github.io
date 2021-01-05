@@ -143,6 +143,7 @@ header {
 }
 
 .right-upper-badge {
+    margin: 15px;
     padding: 15px;
     position: absolute;
     top: 0;
@@ -150,6 +151,7 @@ header {
 }
 
 .right-bottom-badge {
+    margin: 15px;
     padding: 15px;
     position: absolute;
     bottom: 0;
