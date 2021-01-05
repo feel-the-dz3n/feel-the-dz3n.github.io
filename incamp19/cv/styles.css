@@ -21,9 +21,6 @@ img.myphoto {
         position: fixed;
         width: 20%;
         height: 77vh;
-        background-color: rgba(255, 255, 255, 0.733);
-        border-radius: 10px;
-        box-shadow: 0px 0px 10px 0px #00000022;
     }
 }
 
@@ -64,14 +61,18 @@ ul {
     width: auto;
 }
 
+.badge-style {
+    background-color: rgba(255, 255, 255, 0.733);
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px #00000022;
+}
+
 .inline-badge {
     padding: 15px;
     margin: 10px;
-    background-color: rgba(255, 255, 255, 0.733);
     /*float: left;*/
     display: inline-block;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px 0px #00000022;
+    position: relative;
 }
 
 .screenshot {
@@ -83,7 +84,7 @@ a {
     color: #61a1a1;
 }
 
-clean {
+.clean {
     clear: both;
 }
 
@@ -110,6 +111,31 @@ header {
     overflow: auto;
     position: fixed;
     box-shadow: 0px 0px 5px 0px #000000;
+    z-index: 999;
+}
+
+.green-badge {
+    background-color: rgb(43, 136, 35);
+    color:rgba(255, 255, 255, 0.925);
+}
+
+.red-badge {
+    background-color: rgb(136, 55, 35);
+    color:rgba(255, 255, 255, 0.925);
+}
+
+.blue-badge {
+    background-color: rgb(35, 124, 136);
+    color:rgba(255, 255, 255, 0.925);
+}
+
+.small-absolute-badge {
+    padding: 15px;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0.8;
 }
 
 body {
