@@ -1,5 +1,4 @@
-/* Colors and the rest of appearance properties are defined in this file.
-   We've added a few sample properties to get you started */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
 
 * {
     padding: 0;
@@ -9,42 +8,54 @@
 
 body {
     margin: 0;
-    font-family: sans-serif;
-    line-height: 1.6;
-    background: #fefefe;
-
-}
-
-h1 {
-    background: #444545;
-    color: #fff;
-    padding: 0.75rem 0.5rem;
-    text-shadow: 2px 2px 1px #111;
-    font-weight: normal;
-    border-bottom: 1px solid #444;
-}
-
-#content {
-    border-top: 1px solid #993;
-    padding: 1rem 0.5rem;
-}
-
-p {
-    margin: 1rem 0;
-}
-
-button {
-    height: 3.8rem;
-    margin: 0 0 1rem;
-    padding: 0 1.5rem;
-    background: #fafafa;
-    border: 0.1rem solid #a6a6a6;
-    border-radius: 0.2rem;
-    font-size: 1.6rem;
-    line-height: 3.8rem;
+    background: white;
     color: #333;
-    text-align: center;
-    text-shadow: 0.1rem 0.1rem 0 rgba(255,255,255,0.3);
-    text-decoration: none;
-    outline: none;
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+}
+
+.skills-container {
+    display: flex;
+}
+
+.skills-photo {
+    width: 30vw;
+    height: 30vw;
+    margin: 10px;
+}
+
+.skills-values {
+    display: flex;
+    flex-flow: column wrap;
+    align-content: space-around;
+}
+
+.skills-values-content {
+    columns: 2;
+}
+
+header {
+    background-image: url('../img/header.png');
+    color: white;
+}
+
+#skills, #contact {
+    background: #FFFAF2;
+}
+
+/* Wide screen */
+@media (min-width:600px) {
+    header {
+        height: 100vh;
+    }
+}
+
+/* Phone screen */
+@media (max-width:599px) {
+    header {
+        height: 275;
+    }
 }

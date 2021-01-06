@@ -6,12 +6,12 @@
     <!-- This is a comment. Everything between the opening and closing > is ignored by the browser.
     We'll use that to provide you with some help.
     You can safely delete the comments once you're done with them. -->
-
     <!-- This is the title of your page. Change it at will. For example: Super great space game -->
     <title>Hello world!</title>
 
     <!-- Search engines sometimes use this when showing results. Change it to match your page's contents -->
-    <meta name="description" content="My first page is a carefully crafted example of web awesomeness.">
+    <meta name="description" content="My first page is a carefully crafted
+      example of web awesomeness.">
     <meta name="viewport" content="width=device-width">
 
     <!-- Place favicon.ico in the root directory -->
@@ -19,15 +19,56 @@
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-      <h1>Awesome app</h1>
-      <div id="content">
-          <p>Welcome to your awesome web app!</p>
-          <p>This was created from the <a href="https://github.com/mozilla/mortar-app-stub">mortar-app-stub</a>
-          template, one of the <a href="https://github.com/mozilla/mortar">mortar templates</a>.</p>
-
-          <button id="install-btn">Install</button>
-      </div>
-
-    <script type="text/javascript" src="js/app.js"></script>
+    <header>
+      <h1>Portfolio</h1>
+      <h2>Hi it's me</h2>
+      <h3>Designer from Porto, Portugal</h3>
+      <a>Latest works</a>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+    <main>
+      <section id="about">
+        <h2>About</h2>
+        <p>Lorem ipsum dolor sit amet, Arcu, sed nisi, mi, arcu libero phasellus
+          tincidunt. Rhoncus, diam penatibus aliquet tellus, in rutrum augue.
+          Pellentesque senectus risus consectetur et sed purus sed. Consectetur
+          adipiscing elit. Egestas porttitor nulla nulla egestas odio pharetra
+          egestas aliquet mollis.</p>
+        <p>Arcu, sed nisi, mi, arcu libero phasellus tincidunt. Rhoncus, diam
+          penatibus aliquet tellus, in rutrum augue. Pellentesque senectus risus
+          consectetur et sed purus sed. Consectetur adipiscing elit. Egestas
+          porttitor nulla nulla egestas odio pharetra egestas aliquet mollis.
+          diam penatibus aliquet tellus, in rutrum augue. Pellentesque.</p>
+      </section>
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+          <img class="skills-photo" src="img/photo.jpg" alt="My photo"/>
+          <div class="skills-values">
+            <div class="skills-values-content">
+              <p>Test</p><p>Test</p>
+            </div>
+            <div class="skills-values-content">
+              <p>Test</p><p>Test</p>
+              <p>Test</p><p>Test</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="portfolio">
+        <h2>Portfolio</h2>
+      </section>
+    </main>
+    <footer>
+      <section id="contact">
+        <h2>Get in Touch</h2>
+      </section>
+    </footer>
   </body>
 </html>
