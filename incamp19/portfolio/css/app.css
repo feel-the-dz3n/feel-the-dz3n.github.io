@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin&display=swap');
-
 * {
     padding: 0;
     margin: 0;
@@ -40,14 +39,14 @@ body {
     background: #C66C49;
     position: absolute;
     width: 75%;
-    height: 100%; 
+    height: 100%;
 }
 
 .progress-bar-value-25 {
     background: #C66C49;
     position: absolute;
     width: 25%;
-    height: 100%; 
+    height: 100%;
 }
 
 .skills-values {
@@ -119,70 +118,122 @@ section {
     padding-bottom: 25px;
 }
 
-p {
-    margin-bottom: 15px;
-}
-
 section h2 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
     margin-bottom: 19px;
     text-align: center;
 }
 
+section h3 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 25px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.portfolio-item-container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.portfolio-demo-preview {
+    position: relative;
+    width: 309px;
+    height: 196px;
+}
+
+#demo-lt {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 170px;
+    height: 70px;
+}
+
+#demo-rt {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 123px;
+    height: 113px;
+    /* unexpected mask here.. */
+}
+
+#demo-lb {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 170px;
+    height: 114px;
+}
+
+#demo-rb {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 123px;
+    height: 70px;
+}
+
+.portfolio-item-description {
+    margin-bottom: 20px;
+    text-alignment: center;
+}
+
 /* Wide screen */
+
 @media (min-width:600px) {
     header {
         height: 100vh;
-
         padding-top: 93px;
         padding-left: 165px;
         padding-right: 165px;
-        padding-bottom: 93px; /* check */
+        padding-bottom: 93px;
+        /* check */
     }
-
     header a {
         font-size: 18px;
     }
-
     .burger {
         display: none;
     }
-
-    header nav a {    
+    header nav a {
         text-decoration: none;
         margin-left: 30px;
     }
-
     header h1 {
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
         line-height: 29px;
     }
-
     header h2 {
         margin-top: 145px;
-
         font-style: normal;
         font-weight: normal;
         font-size: 64px;
         line-height: 78px;
     }
-
     header h3 {
         margin-top: 26px;
-
         font-style: normal;
         font-weight: normal;
         font-size: 24px;
         line-height: 29px;
     }
-
     #latest-works-link {
         margin-top: 106px;
     }
 }
 
 /* Phone screen */
+
 @media (max-width:599px) {
     header {
         padding-left: 34px;
@@ -190,52 +241,42 @@ section h2 {
         padding-top: 39px;
         padding-bottom: 50px;
     }
-
     header a {
         font-size: 13px;
     }
-
     header nav {
         display: none;
     }
-
     header h1 {
         /* h1 needs to be centered at mobile version 
          * since we can't justify-self, we can use
          * margin: auto instead
          */
-        margin: auto; 
-
+        margin: auto;
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
         line-height: 29px;
     }
-
     header h2 {
         margin-top: 50px;
         text-align: center;
-
         font-style: normal;
         font-weight: normal;
         font-size: 20px;
         line-height: 24px;
     }
-
     header h3 {
         margin-top: 13px;
         text-align: center;
-
         font-style: normal;
         font-weight: normal;
         line-height: 16px;
         font-size: 13px;
     }
-
     #latest-works-link {
         display: block;
         text-align: center;
-
         margin-top: 41px;
     }
 }
