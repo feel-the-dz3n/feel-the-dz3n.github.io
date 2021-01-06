@@ -10,7 +10,7 @@ body {
     margin: 0;
     background: white;
     color: #333;
-    font-family: 'Libre Franklin';
+    font-family: 'Libre Franklin', sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
@@ -50,48 +50,129 @@ header a {
     display: inline-block;
     font-style: normal;
     font-weight: normal;
-    font-size: 18px;
     color: white;
+}
+
+.burger {
+    /* fixme: burger implementation */
+    width: 24px;
+    height: 24px;
+}
+
+.header-topbar {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
 }
 
 /* Wide screen */
 @media (min-width:600px) {
     header {
         height: 100vh;
+
+        padding-top: 93px;
+        padding-left: 165px;
+        padding-right: 165px;
+        padding-bottom: 93px; /* check */
     }
 
-    nav a {    
+    header a {
+        font-size: 18px;
+    }
+
+    .burger {
+        display: none;
+    }
+
+    header nav a {    
         text-decoration: none;
-        margin-left: 30;
-        margin-right: 30;
+        margin-left: 30px;
     }
 
     header h1 {
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
+        line-height: 29px;
     }
 
     header h2 {
+        margin-top: 145px;
+
         font-style: normal;
         font-weight: normal;
         font-size: 64px;
+        line-height: 78px;
     }
 
     header h3 {
+        margin-top: 26px;
+
         font-style: normal;
         font-weight: normal;
         font-size: 24px;
+        line-height: 29px;
+    }
+
+    #latest-works-link {
+        margin-top: 106px;
     }
 }
 
 /* Phone screen */
 @media (max-width:599px) {
     header {
-        height: 275;
+        padding-left: 34px;
+        padding-right: 34px;
+        padding-top: 39px;
+        padding-bottom: 50px;
+    }
+
+    header a {
+        font-size: 13px;
     }
 
     header nav {
-        visibility: collapse;
+        display: none;
+    }
+
+    header h1 {
+        /* h1 needs to be centered at mobile version 
+         * since we can't justify-self, we can use
+         * margin: auto instead
+         */
+        margin: auto; 
+
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 29px;
+    }
+
+    header h2 {
+        margin-top: 50px;
+        text-align: center;
+
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    header h3 {
+        margin-top: 13px;
+        text-align: center;
+
+        font-style: normal;
+        font-weight: normal;
+        line-height: 16px;
+        font-size: 13px;
+    }
+
+    #latest-works-link {
+        display: block;
+        text-align: center;
+
+        margin-top: 41px;
     }
 }
