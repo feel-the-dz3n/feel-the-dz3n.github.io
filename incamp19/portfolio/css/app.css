@@ -148,6 +148,44 @@ section h3 {
     height: 196px;
 }
 
+.contacts-block-1 {
+    flex-basis: 50%;
+}
+
+.contacts-block-2 {
+    flex-basis: 50%;
+}
+
+.contacts-block-3 {
+    margin-top: 30px;
+}
+
+.contacts a {
+    display: block;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #333;
+    margin-bottom: 19px;
+}
+
+.up-btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 25px;
+    height: 25px;
+}
+
+.contacts {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
 #demo-lt {
     position: absolute;
     top: 0;
@@ -183,7 +221,7 @@ section h3 {
 
 .portfolio-item-description {
     margin-bottom: 20px;
-    text-alignment: center;
+    text-align: center;
 }
 
 /* Wide screen */
