@@ -19,18 +19,20 @@ body {
 
 .skills-container {
     display: flex;
+    flex-flow: column wrap;
+    align-content: center;
 }
 
 .skills-photo {
-    width: 30vw;
-    height: 30vw;
+    max-width: 224px;
+    max-height: 218px;
     margin: 10px;
 }
 
 .skills-values {
     display: flex;
     flex-flow: column wrap;
-    align-content: space-around;
+    justify-content: space-between;
 }
 
 .skills-values-content {
@@ -73,8 +75,13 @@ section {
     padding-bottom: 25px;
 }
 
-h2 {
+p {
+    margin-bottom: 15px;
+}
+
+section h2 {
     margin-bottom: 19px;
+    text-align: center;
 }
 
 /* Wide screen */
