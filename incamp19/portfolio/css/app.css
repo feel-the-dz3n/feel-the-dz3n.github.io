@@ -274,6 +274,7 @@ section {
 @media (min-width:600px) {
     section h2 {
         text-align: left;
+        margin-bottom: 86px;
     }
     header {
         height: 100vh;
@@ -320,14 +321,74 @@ section {
         line-height: 29px;
         text-align: left;
     }
+    strong {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 25px;
+    }
     section {
         padding-top: 93px;
         padding-left: 165px;
         padding-right: 165px;
         padding-bottom: 93px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 30px;
+    }
+    section h3 {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 25px;
+        text-align: left;
     }
     #latest-works-link {
         margin-top: 106px;
         text-align: left;
+    }
+    .portfolio-demo-preview {
+        width: 634px;
+        height: 403px;
+    }
+    #demo-lt {
+        min-width: 350px;
+        min-height: 144px;
+    }
+    #demo-rt {
+        min-width: 255px;
+        min-height: 233px;
+    }
+    #demo-lb {
+        min-width: 349px;
+        min-height: 233px;
+    }
+    #demo-rb {
+        min-width: 255px;
+        min-height: 144px;
+    }
+    .portfolio-item-description {
+        text-align: left;
+        align-self: flex-start;
+        flex-basis: 40%;
+    }
+    .portfolio-demo-preview {
+        flex-basis: 60%;
+    }
+    .skills-container {
+        flex-flow: row;
+        justify-content: space-between;
+    }
+    .skills-values {
+        margin-left: 125px;
+    }
+    .skills-photo {
+        max-width: 350px;
+        max-height: 350px;
+    }
+    .portfolio-item-container {
+        flex-flow: row;
+        justify-content: space-between;
     }
 }
