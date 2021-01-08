@@ -84,6 +84,8 @@ strong {
 
 header {
     background-image: url('../img/header.png');
+    background-repeat: no-repeat;
+    background-color: #96846a;
     color: white;
     padding-left: 34px;
     padding-right: 34px;
@@ -132,9 +134,35 @@ section h3 {
 }
 
 .portfolio-demo-preview {
-    position: relative;
-    width: 309px;
-    height: 196px;
+    columns: 2;
+}
+
+#demo-lt {
+    background-image: url('../img/portfolio_lt.png');
+    width: 169px;
+    height: 70px;
+}
+
+#demo-lb {
+    background-image: url('../img/portfolio_lb.png');
+    margin-top: 12px;
+    width: 169px;
+    height: 113px;
+    break-inside: avoid-column;
+}
+
+#demo-rt {
+    background-image: url('../img/portfolio_rt.png');
+    width: 123px;
+    height: 113px;
+    break-inside: avoid-column;
+}
+
+#demo-rb {
+    background-image: url('../img/portfolio_rb.png');
+    margin-top: 12px;
+    width: 123px;
+    height: 69px;
 }
 
 .contacts-block-1 {
@@ -173,39 +201,6 @@ section h3 {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
-}
-
-#demo-lt {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 170px;
-    height: 70px;
-}
-
-#demo-rt {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 123px;
-    height: 113px;
-    /* unexpected mask here.. */
-}
-
-#demo-lb {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 170px;
-    height: 114px;
-}
-
-#demo-rb {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 123px;
-    height: 70px;
 }
 
 .portfolio-item-description {
@@ -348,33 +343,29 @@ section {
         margin-top: 106px;
         text-align: left;
     }
-    .portfolio-demo-preview {
-        width: 634px;
-        height: 403px;
-    }
-    #demo-lt {
-        min-width: 350px;
-        min-height: 144px;
-    }
-    #demo-rt {
-        min-width: 255px;
-        min-height: 233px;
-    }
-    #demo-lb {
-        min-width: 349px;
-        min-height: 233px;
-    }
-    #demo-rb {
-        min-width: 255px;
-        min-height: 144px;
-    }
     .portfolio-item-description {
         text-align: left;
         align-self: flex-start;
-        flex-basis: 40%;
     }
-    .portfolio-demo-preview {
-        flex-basis: 60%;
+    #demo-lt {
+        width: 350px;
+        height: 144px;
+    }
+    #demo-lb {
+        width: 349px;
+        height: 233px;
+        margin-top: 25px;
+    }
+    #demo-rt {
+        margin-left: 10px;
+        width: 233px;
+        height: 255px;
+    }
+    #demo-rb {
+        margin-left: 10px;
+        margin-top: 25px;
+        width: 255px;
+        height: 144px;
     }
     .skills-container {
         flex-flow: row;
@@ -400,6 +391,9 @@ section {
     .contacts-block-3 {
         margin: 0;
         flex-basis: 3/3;
+    }
+    .portfolio-demo-preview {
+        align-self: flex-end;
     }
     .contacts {
         flex-flow: row;
