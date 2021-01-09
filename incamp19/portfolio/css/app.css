@@ -84,7 +84,7 @@ strong {
 
 header {
     background-image: url('../img/header.png');
-    background-repeat: no-repeat;
+    background-size: cover;
     background-color: #96846a;
     color: white;
     padding-left: 34px;
@@ -397,5 +397,9 @@ section {
     }
     .contacts {
         flex-flow: row;
+    }
+    main, footer {
+        max-width: 1440px;
+        margin: 0 auto;
     }
 }
