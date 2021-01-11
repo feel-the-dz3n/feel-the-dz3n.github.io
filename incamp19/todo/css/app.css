@@ -26,6 +26,10 @@ body {
     padding: 15px;
 }
 
+.content__title {
+    text-align: center;
+}
+
 .tasks-list {
     background: rgb(241, 241, 241);
     border-radius: 3px;
@@ -75,4 +79,15 @@ body {
 
 .task-item__dueDateTime_outdated {
     color: rgb(206, 69, 69);
+}
+
+@media (min-width:600px) {
+    .content__title {
+        text-align: left;
+    }
+
+    .content {
+        margin: 0 auto;
+        max-width: 600px;
+    }
 }
