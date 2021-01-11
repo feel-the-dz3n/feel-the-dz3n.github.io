@@ -47,6 +47,14 @@ let tasks = [
     new Task("Task Two", true, null, new Date("12.05.2021 14:00")),
     new Task("Task Without Date", true, null, null),
     new Task("Task Outdated", true, "This task is outdated...", new Date("12.05.2015 14:00")),
+    new Task("Task One", false, "This is the description for task one.", new Date("12.01.2021 14:00")),
+    new Task("Task Two", true, null, new Date("12.05.2021 14:00")),
+    new Task("Task Without Date", true, null, null),
+    new Task("Task Outdated", true, "This task is outdated...", new Date("12.05.2015 14:00")),
+    new Task("Task One", false, "This is the description for task one.", new Date("12.01.2021 14:00")),
+    new Task("Task Two", true, null, new Date("12.05.2021 14:00")),
+    new Task("Task Without Date", true, null, null),
+    new Task("Task Outdated", true, "This task is outdated...", new Date("12.05.2015 14:00")),
 ];
 
 let taskListDom = document.getElementById("task-list");
