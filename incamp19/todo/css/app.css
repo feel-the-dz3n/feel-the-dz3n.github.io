@@ -6,15 +6,36 @@ body {
 
 .header {
     background: gray;
-    padding: 2px;
+    color: white;
+    padding: 15px;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
 }
 
 .header__title {
     margin-left: 15px;
-    margin-right: 15px;
-    color: white;
+}
+
+.header__logo {
+    width: 48px;
+    height: 48px;
 }
 
 .content {
     padding: 15px;
+}
+
+.tasks-list {
+    background: rgb(230, 230, 230);
+    border-radius: 3px;
+    padding: 15px;
+    border: 1px solid gray;
+}
+
+.task-list__item {
+    padding: 15px;
+    background: rgb(212, 212, 212);
+    border-radius: 3px;
+    border: 1px solid rgb(182, 182, 182);
 }
