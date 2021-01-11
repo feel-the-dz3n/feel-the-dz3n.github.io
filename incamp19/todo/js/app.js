@@ -27,17 +27,17 @@ function taskToDom(task) {
     html.push(`<div class='task-item__title-container'>`);
     html.push(`<input type="checkbox" class="task-item__doneCheckbox" `, task.done ? `checked` : ``, `>`);
     html.push(`<h3 class="task-item__name `, task.done ? `task-item__name_done` : ``, `">`, task.name, "</h3>");
-    html.push(`</div>`); // title-container
+    html.push(`</div>`); // task-item__title-container
     if (task.dueDateTime) {
         html.push(`<div class="task-item__dueDateTime `, isTaskOutdated(task) ? `task-item__dueDateTime_outdated` : ``, `">`, getTaskDueDateTime(task), "</div>");
     }
-    html.push(`</div>`);
+    html.push(`</div>`); // task-item__header
 
     if (task.description) {
         html.push(`<p class="task-item__description">`, task.description, `</p>`);
     }
 
-    html.push(`</div>`);
+    html.push(`</div>`); // task-item
 
     return html.join("");
 }
