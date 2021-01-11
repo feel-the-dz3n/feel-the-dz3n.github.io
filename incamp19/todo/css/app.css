@@ -23,7 +23,8 @@ body {
 }
 
 .content {
-    padding: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .content__title {
@@ -89,5 +90,9 @@ body {
     .content {
         margin: 0 auto;
         max-width: 600px;
+    }
+
+    .content {
+        padding: 15px;
     }
 }
