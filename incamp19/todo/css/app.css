@@ -54,6 +54,7 @@ body {
 
 .add-task__input {
     margin: 5px;
+    width: 100%;
 }
 
 .add-task-buttons {

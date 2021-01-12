@@ -8,12 +8,42 @@ class Task {
     }
 }
 
+let lastId = 0;
+
+function getId() {
+    lastId++;
+    return lastId;
+}
+
 let tasks = [
-    new Task(1, "Feed The Cat", false, null, new Date("12.01.2021 14:00")),
-    new Task(2, "Buy Goods", false, "Bread, cat feed, mop", new Date("01.01.2021 14:00")),
-    new Task(3, "Wash The Car", true, null, new Date("12.05.2021 14:00")),
-    new Task(4, "Visit Doctor", false, null, new Date("12.02.2021 14:00")),
+    new Task(getId(), "Feed The Cat", false, null, new Date("12.01.2021 14:00")),
+    new Task(getId(), "Buy Goods", false, "Bread, cat feed, mop", new Date("01.01.2021 14:00")),
+    new Task(getId(), "Wash The Car", true, null, new Date("12.05.2021 14:00")),
+    new Task(getId(), "Visit Doctor", false, null, new Date("12.02.2021 14:00")),
 ];
+
+function createTaskClick(event) {
+    let title = document.getElementById("new-task-title");
+    let description = document.getElementById("new-task-description");
+    let date = document.getElementById("new-task-date");
+
+    if (title.value !== "") {
+        console.log(date.value, new Date(date.value), getFormattedDate(new Date(date.value)));
+        let task = new Task(getId(), title.value, false, description.value, new Date(date.value));
+
+        tasks.push(task);
+        appendDomTask(task);
+
+        title.value = "";
+        description.value = "";
+        date.value = "";
+
+        setModalVisible(false);
+    }
+    else {
+        alert('Enter the title.');
+    }
+}
 
 function setModalVisible(visible) {
     let modalContent = document.querySelector(".modal-content");
@@ -41,10 +71,27 @@ function isTaskOverdue(task) {
     return now > task.dueDateTime;
 }
 
+function formatDateDigit(num) {
+    if ((num + '').length <= 1) {
+        return '0' + num;
+    }
+    else {
+        return num;
+    }
+}
+
+function getFormattedDate(date) {
+    let day = formatDateDigit(date.getDate());
+    let month = formatDateDigit(date.getMonth() + 1);
+    let year = date.getFullYear();
+    let hour = formatDateDigit(date.getHours());
+    let minute = formatDateDigit(date.getMinutes());
+    return `${day}.${month}.${year} ${hour}:${minute}`;
+}
+
 function getTaskDueDateTime(task) {
     let date = task.dueDateTime;
-    // FIXME: leading zeros
-    return `${date.getDay()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+    return getFormattedDate(date);
 }
 
 function taskToDom(task) {
@@ -105,17 +152,21 @@ function removeTaskEvent(event) {
     return false;
 }
 
-function refreshTasks() {
+function appendDomTask(task) {
     let taskListDom = document.getElementById("task-list");
+    taskListDom.innerHTML += taskToDom(task);
+}
+
+function refreshTasks() {
     let radioIncomplete = document.getElementById("filter-incomplete");
     let radioAll = document.getElementById("filter-all");
 
-    taskListDom.innerHTML = "";
+    document.getElementById("task-list").innerHTML = "";
 
     for (let task of tasks) {
         // if show all or show only incomplete
         if (radioAll.checked || (radioIncomplete.checked && !task.done))
-            taskListDom.innerHTML += taskToDom(task);
+            appendDomTask(task);
     }
 }
 

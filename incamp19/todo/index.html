@@ -41,17 +41,17 @@
     <form class="add-task" onclick="event.stopPropagation()">
       <h2 class="add-task__title">Create Task</h2>
       <div class="add-task__input">
-        <input placeholder="Title (required)">
+        <input id="new-task-title" placeholder="Title (required)" required="true">
       </div>
       <div class="add-task__input">
-        <input placeholder="Description">
+        <input id="new-task-description" placeholder="Description">
       </div>
       <div class="add-task__input">
-        <input type="datetime" placeholder="Due Date">
+        <input id="new-task-date" type="datetime-local" placeholder="Due Date">
       </div>
       <div class="add-task-buttons">
         <button class="add-task-buttons__button" onclick="hideModalEvent(event)">Cancel</button>
-        <button class="add-task-buttons__button">Create</button>
+        <button class="add-task-buttons__button" onclick="createTaskClick(event)">Create</button>
       </div>
     </form>
   </div>
