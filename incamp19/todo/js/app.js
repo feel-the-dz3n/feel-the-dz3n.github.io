@@ -106,7 +106,7 @@ function taskToDom(task) {
     html.push(`<h3 class="task-item__name `, task.done ? `task-item__name_done` : ``, `">`, task.name, "</h3>");
     html.push(`</div>`); // task-item__title-side-container
     html.push(`<div class='task-item__title-side-container'>`);
-    if (task.dueDateTime) {
+    if (task.dueDateTime && !isNaN(task.dueDateTime)) {
         html.push(`<div class="task-item__dueDateTime `, !task.done && isTaskOverdue(task) ? `task-item__dueDateTime_overdue` : ``, `">`, getTaskDueDateTime(task), "</div>");
     }
     html.push(`</div>`); // task-item__title-side-container
