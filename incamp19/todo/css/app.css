@@ -38,11 +38,24 @@ body {
 }
 
 .task-item {
+    position: relative;
     padding: 15px;
     margin: 10px;
     background: rgb(233, 233, 233);
     border-radius: 3px;
     border: 1px solid rgb(182, 182, 182);
+}
+
+.task-item__remove-icon {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+}
+
+.task-item:hover .task-item__remove-icon {
+    display: block;
 }
 
 .task-item:hover {
