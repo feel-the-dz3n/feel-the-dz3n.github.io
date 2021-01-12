@@ -38,13 +38,83 @@ body {
     padding: 10px;
 }
 
+.add-task {
+    background: rgb(27, 27, 27);
+    width: auto;
+    height: auto;
+    padding: 25px;
+}
+
+.add-task__title {
+    margin: 5px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.575);
+}
+
+.add-task__input {
+    margin: 5px;
+}
+
+.add-task-buttons {
+    display: flex;
+    margin-top: 15px;
+    justify-content: flex-end;
+}
+
+.add-task-buttons__button {
+    padding: 8px;
+    margin: 3px;
+}
+
+.body__add-task-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 20px;
+    border-radius: 50%;
+    background: white;
+    color: rgb(37, 37, 37);
+    border: 1px solid rgb(199, 199, 199);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.7, 0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+        transform: scale(0.7, 0.7);
+    }
+    100% {
+        display: none;
+        pointer-events: none;
+    }
+}
+
 .modal-content {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.158);
+    color: rgb(230, 230, 230);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgb(27, 27, 27);
+    opacity: 0;
 }
 
 .task-item {
@@ -150,7 +220,20 @@ body {
     margin-right: 12px;
 }
 
+.modal-content_hide {
+    display: flex;
+    animation: fadeOut 200ms ease-in-out forwards;
+}
+
+.modal-content_show {
+    display: flex;
+    animation: fadeIn 200ms ease-in-out forwards;
+}
+
 @media (min-width:600px) {
+    .modal-content {
+        background: rgba(0, 0, 0, 0.137);
+    }
     .main-content__title {
         text-align: left;
         margin-left: 15px;
@@ -158,6 +241,13 @@ body {
     .main-content {
         display: flex;
         flex-flow: row wrap;
+    }
+    .add-task {
+        border-radius: 8px;
+        border: 1px solid rgb(150, 150, 150);
+        box-shadow: 0 0 30px 1px rgba(0, 0, 0, 0.575);
+        width: fit-content;
+        height: fit-content;
     }
     .header {
         flex-basis: 100%;

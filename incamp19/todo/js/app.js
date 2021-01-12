@@ -15,6 +15,27 @@ let tasks = [
     new Task(4, "Visit Doctor", false, null, new Date("12.02.2021 14:00")),
 ];
 
+function setModalVisible(visible) {
+    let modalContent = document.querySelector(".modal-content");
+
+    if (visible) {
+        modalContent.classList.add("modal-content_show");
+        modalContent.classList.remove("modal-content_hide");
+    }
+    else {
+        modalContent.classList.remove("modal-content_show");
+        modalContent.classList.add("modal-content_hide");
+    }
+}
+
+function hideModalEvent(event) {
+    setModalVisible(false);
+}
+
+function addTaskClickEvent(event) {
+    setModalVisible(true);
+}
+
 function isTaskOverdue(task) {
     let now = new Date();
     return now > task.dueDateTime;
