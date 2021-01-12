@@ -54,8 +54,21 @@ body {
     padding: 10px;
 }
 
+.task-item__removed {
+    background: red;
+    /* FIXME: cool fadeout animation here */
+}
+
 .task-item:hover .task-item__remove-icon {
     display: block;
+    font-size: 25px;
+    color: rgb(116, 45, 45);
+    text-decoration: none;
+}
+
+.task-item:hover .task-item__remove-icon:hover {
+    color: rgb(206, 69, 69);
+    text-decoration: underline;
 }
 
 .task-item:hover {
@@ -132,16 +145,13 @@ body {
     }
     .list-filter {
         flex-basis: 20%;
-
         background: rgb(250, 250, 250);
         justify-content: flex-start;
         flex-flow: column wrap;
-
         border: 1px solid rgb(197, 197, 197);
     }
     .tasks-list {
         flex-basis: 80%;
-
         border: 1px solid rgb(197, 197, 197);
         border-left: 0;
     }

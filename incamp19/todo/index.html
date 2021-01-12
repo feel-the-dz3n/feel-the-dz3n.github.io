@@ -18,14 +18,14 @@
           <div class="list-filter">
             <h2 class="list-filter__title">Filter</h2> 
 
-            <div>
-              <input class="list-filter__radiobutton" name="filter-all" type="radio">
-              <label class="list-filter__label" for="filter-all">All</label>
+            <div onclick="filterAll(event)">
+              <input class="list-filter__radiobutton" id="filter-all" type="radio">
+              <label class="list-filter__label">All</label>
             </div>
 
-            <div>
-              <input class="list-filter__radiobutton" name="filter-incomplete" type="radio">
-              <label class="list-filter__label" for="filter-incomplete">Only Incomplete</label>
+            <div onclick="filterIncomplete(event)">
+              <input class="list-filter__radiobutton" id="filter-incomplete" type="radio">
+              <label class="list-filter__label">Only Incomplete</label>
             </div>
           </div>
           <div id="task-list" class="tasks-list">
