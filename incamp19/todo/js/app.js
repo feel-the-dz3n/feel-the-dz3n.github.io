@@ -53,14 +53,31 @@ function taskToDom(task) {
     return html.join("");
 }
 
+
+function changeTaskStatusEvent(event) {
+    let taskItemNode = event.target.parentNode.parentNode.parentNode;
+    let taskId = taskItemNode.dataset.id;
+
+    for (let task of tasks) {
+        if (task.id == taskId) {
+            task.done = !task.done;
+
+            taskItemNode.outerHTML = taskToDom(task);
+
+            return false;
+        }
+    }
+}
+
 function removeTaskEvent(event) {
     let id = event.target.dataset.id;
     let taskItemBlock = event.target.parentNode;
 
-    for (let task of tasks) {
+    for (let i = 0; i < tasks.length; i++) {
+        let task = tasks[i];
         if (task.id == id) {
             // remove task from array
-            tasks.splice(tasks.indexOf(task), 1);
+            tasks.splice(i, 1);
 
             // put a class modificator that element is removed
             // this is supposed to be a fadeout animation
