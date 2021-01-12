@@ -5,6 +5,11 @@ body {
     position: relative;
 }
 
+textarea {
+    font-family: inherit;
+    font-size: 13px;
+}
+
 .header {
     background: gray;
     color: white;
@@ -49,7 +54,36 @@ body {
     margin: 5px;
     font-weight: 500;
     margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.575);
+}
+
+.add-task__input input {
+    padding: 6px;
+    width: 200px;
+    background: rgba(255, 255, 255, 0.055);
+    color: rgba(255, 255, 255, 0.966);
+    border: 1px solid rgba(128, 128, 128, 0.521);
+    border-radius: 3px;
+}
+
+.add-task__input textarea {
+    padding: 6px;
+    width: 200px;
+    background: rgba(255, 255, 255, 0.055);
+    color: rgba(255, 255, 255, 0.966);
+    border: 1px solid rgba(128, 128, 128, 0.521);
+    border-radius: 3px;
+}
+
+.add-task__input_description textarea {
+    opacity: 0.60;
+}
+
+.add-task__input_description:hover textarea {
+    opacity: 1;
+}
+
+.add-task__input_description textarea {
+    height: 75px;
 }
 
 .add-task__input {
@@ -64,8 +98,23 @@ body {
 }
 
 .add-task-buttons__button {
-    padding: 8px;
+    padding: 10px;
     margin: 3px;
+
+    background: rgba(255, 255, 255, 0);
+    color: rgba(255, 255, 255, 0.966);
+    border: 1px solid rgba(128, 128, 128, 0.521);
+    border-radius: 3px;
+
+    font-size: 14px;
+}
+
+.add-task-buttons__button:hover {
+    background: rgba(255, 255, 255, 0.096);
+}
+
+.add-task-buttons__button:active {
+    background: rgba(0, 0, 0, 0.301);
 }
 
 .body__add-task-button {
