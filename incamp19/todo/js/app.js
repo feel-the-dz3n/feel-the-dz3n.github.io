@@ -58,36 +58,28 @@ function changeTaskStatusEvent(event) {
     let taskItemNode = event.target.parentNode.parentNode.parentNode;
     let taskId = taskItemNode.dataset.id;
 
-    for (let task of tasks) {
-        if (task.id == taskId) {
-            task.done = !task.done;
+    let task = tasks.find(task => task.id == taskId);
+    task.done = !task.done;
 
-            taskItemNode.outerHTML = taskToDom(task);
+    taskItemNode.outerHTML = taskToDom(task);
 
-            return false;
-        }
-    }
+    return false;
 }
 
 function removeTaskEvent(event) {
     let id = event.target.dataset.id;
     let taskItemBlock = event.target.parentNode;
 
-    for (let i = 0; i < tasks.length; i++) {
-        let task = tasks[i];
-        if (task.id == id) {
-            // remove task from array
-            tasks.splice(i, 1);
+    let taskIndex = tasks.findIndex(task => task.id == id);
+    // remove task from array
+    tasks.splice(taskIndex, 1);
 
-            // put a class modificator that element is removed
-            // this is supposed to be a fadeout animation
-            taskItemBlock.classList.add("task-item__removed");
+    // put a class modificator that element is removed
+    // this is supposed to be a fadeout animation
+    taskItemBlock.classList.add("task-item__removed");
 
-            // after fadeout timeout remove block from the page
-            setTimeout(function () { taskItemBlock.remove(); }, 500);
-            return false;
-        }
-    }
+    // after fadeout timeout remove block from the page
+    setTimeout(function () { taskItemBlock.remove(); }, 500);
 
     return false;
 }
