@@ -186,6 +186,7 @@ body {
 
 .document-content {
     height: 90%;
+    overflow-y: auto;
 }
 
 .task-item__doneCheckbox {
