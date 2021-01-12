@@ -55,13 +55,13 @@ body {
 }
 
 .task-item__removed {
-    background: red;
-    /* FIXME: cool fadeout animation here */
+    transition: opacity 250ms ease-out;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .task-item:hover .task-item__remove-icon {
     display: block;
-    font-size: 25px;
     color: rgb(116, 45, 45);
     text-decoration: none;
 }

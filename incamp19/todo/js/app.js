@@ -9,18 +9,10 @@ class Task {
 }
 
 let tasks = [
-    new Task(1, "Task One", false, "This is the description for task one.", new Date("12.01.2021 14:00")),
-    new Task(2, "Task Two", true, null, new Date("12.05.2021 14:00")),
-    new Task(3, "Task Without Date", true, null, null),
-    new Task(4, "Task Overdue", false, "This task is overdue...", new Date("12.05.2015 14:00")),
-    new Task(5, "Task One", false, "This is the description for task one.", new Date("12.01.2021 14:00")),
-    new Task(6, "Task Two", true, null, new Date("12.05.2021 14:00")),
-    new Task(7, "Task Without Date", true, null, null),
-    new Task(8, "Task Overdue", true, "This task is overdue...", new Date("12.05.2015 14:00")),
-    new Task(9, "Task One", false, "This is the description for task one.", new Date("12.01.2021 14:00")),
-    new Task(10, "Task Two", true, null, new Date("12.05.2021 14:00")),
-    new Task(11, "Task Without Date", true, null, null),
-    new Task(12, "Task Overdue", true, "This task is overdue...", new Date("12.05.2015 14:00")),
+    new Task(1, "Feed The Cat", false, null, new Date("12.01.2021 14:00")),
+    new Task(2, "Buy Goods", false, "Bread, cat feed, mop", new Date("01.01.2021 14:00")),
+    new Task(3, "Wash The Car", true, null, new Date("12.05.2021 14:00")),
+    new Task(4, "Visit Doctor", false, null, new Date("12.02.2021 14:00")),
 ];
 
 function isTaskOverdue(task) {
@@ -38,11 +30,11 @@ function taskToDom(task) {
     var html = [];
 
     html.push(`<div class='task-item `, task.done ? `task-item_done` : ``, `' data-id='`, task.id, `'>`);
-    html.push(`<a class='task-item__remove-icon' href="#">&#128465;</a>`);
+    html.push(`<a class='task-item__remove-icon' data-id='`, task.id, `' href="#" onclick='removeTaskEvent(event)'>&#10060;</a>`);
 
     html.push(`<div class='task-item__header'>`);
     html.push(`<div class='task-item__title-side-container'>`);
-    html.push(`<input type="checkbox" class="task-item__doneCheckbox" `, task.done ? `checked` : ``, `>`);
+    html.push(`<input type="checkbox" class="task-item__doneCheckbox" onclick="changeTaskStatusEvent(event)" `, task.done ? `checked` : ``, `>`);
     html.push(`<h3 class="task-item__name `, task.done ? `task-item__name_done` : ``, `">`, task.name, "</h3>");
     html.push(`</div>`); // task-item__title-side-container
     html.push(`<div class='task-item__title-side-container'>`);
@@ -59,6 +51,28 @@ function taskToDom(task) {
     html.push(`</div>`); // task-item
 
     return html.join("");
+}
+
+function removeTaskEvent(event) {
+    let id = event.target.dataset.id;
+    let taskItemBlock = event.target.parentNode;
+
+    for (let task of tasks) {
+        if (task.id == id) {
+            // remove task from array
+            tasks.splice(tasks.indexOf(task), 1);
+
+            // put a class modificator that element is removed
+            // this is supposed to be a fadeout animation
+            taskItemBlock.classList.add("task-item__removed");
+
+            // after fadeout timeout remove block from the page
+            setTimeout(function () { taskItemBlock.remove(); }, 500);
+            return false;
+        }
+    }
+
+    return false;
 }
 
 function refreshTasks() {
