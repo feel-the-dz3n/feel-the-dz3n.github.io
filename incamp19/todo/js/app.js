@@ -19,17 +19,34 @@ class Task {
     }
 }
 
+function postTask(task) {
+    return fetch(tasksEndpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(task)
+    }).then(handleErrorsGetJson);
+}
+
 const createTaskForm = document.forms['add-task'];
 createTaskForm.addEventListener('submit', (event) => {
     event.preventDefault();
     try {
         const formData = new FormData(createTaskForm);
         const taskObject = Object.fromEntries(formData.entries());
-        const task = new Task(getId(), taskObject.name, false, taskObject.description, new Date(taskObject.dueDateTime));
-        tasks.push(task);
-        appendDomTask(task);
-        setModalVisible(false);
-        createTaskForm.reset();
+
+        postTask(taskObject)
+            .then(taskJson => {
+                const task = new Task(taskJson);
+                appendDomTask(task);
+                setModalVisible(false);
+                createTaskForm.reset();
+            })
+            .catch(err => {
+                console.log(err);
+                alert("Something went wrong");
+            });
     } catch (e) {
         alert(e);
     }
@@ -46,6 +63,15 @@ function setModalVisible(visible) {
         modalContent.classList.remove("modal-content_show");
         modalContent.classList.add("modal-content_hide");
     }
+}
+
+function handleErrors(response) {
+    if (!response.ok) throw new Error("Request failed");
+    return response;
+}
+
+function handleErrorsGetJson(response) {
+    return handleErrors(response).json();
 }
 
 function hideModalEvent(event) {
@@ -124,20 +150,26 @@ function changeTaskStatusEvent(event) {
     return false;
 }
 
+function sendRemoveTaskRequest(taskId) {
+    return fetch(tasksEndpoint + `/${taskId}`, { method: 'DELETE' })
+        .then(handleErrors);
+}
+
 function removeTaskEvent(event) {
     let id = event.target.dataset.id;
     let taskItemBlock = event.target.parentNode;
-
-    let taskIndex = tasks.findIndex(task => task.id == id);
-    // remove task from array
-    tasks.splice(taskIndex, 1);
 
     // put a class modificator that element is removed
     // this is supposed to be a fadeout animation
     taskItemBlock.classList.add("task-item__removed");
 
-    // after fadeout timeout remove block from the page
-    setTimeout(function () { taskItemBlock.remove(); }, 500);
+    sendRemoveTaskRequest(taskItemBlock.dataset.id)
+        .then(_ => setTimeout(function () { taskItemBlock.remove(); }, 500))
+        .catch(err => {
+            console.log(err);
+            alert("Unable to remove task");
+            taskItemBlock.classList.remove("task-item__removed");
+        });
 
     return false;
 }
@@ -147,19 +179,31 @@ function appendDomTask(task) {
     taskListDom.innerHTML += taskToDom(task);
 }
 
+function fetchTasks() {
+    return fetch(tasksEndpoint)
+        .then(handleErrorsGetJson);
+}
+
 function refreshTasks() {
-    let radioIncomplete = document.getElementById("filter-incomplete");
-    let radioAll = document.getElementById("filter-all");
+    const radioIncomplete = document.getElementById("filter-incomplete");
+    const radioAll = document.getElementById("filter-all");
 
-    document.getElementById("task-list").innerHTML = "";
+    const taskListBlock = document.getElementById("task-list");
+    taskListBlock.innerHTML = "";
 
-    fetch(tasksEndpoint)
-        .then(response => response.json())
-        .then(tasks => tasks.forEach(function (taskJson) {
-            if (radioAll.checked || (radioIncomplete.checked && !task.done)) {
-                appendDomTask(new Task(taskJson));
-            }
-        }));
+    fetchTasks()
+        .then(tasksJson => {
+            tasksJson.forEach(function (taskJson) {
+                const task = new Task(taskJson);
+                if (radioAll.checked || (radioIncomplete.checked && !task.done)) {
+                    appendDomTask(task);
+                }
+            })
+        })
+        .catch(err => {
+            console.log(err);
+            taskListBlock.innerHTML = "Something went wrong";
+        });
 }
 
 function setFilterCheck(id) {
