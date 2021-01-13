@@ -12,10 +12,6 @@ class Task {
             this.description = description;
             this.dueTime = dueTime;
         }
-
-        if (this.title === "") {
-            throw new Error("Task's name can't be empty");
-        }
     }
 }
 
@@ -35,6 +31,9 @@ createTaskForm.addEventListener('submit', (event) => {
     try {
         const formData = new FormData(createTaskForm);
         const taskObject = Object.fromEntries(formData.entries());
+
+        if (taskObject.title === "")
+            throw new Error("Task's title can't be empty");
 
         postTask(taskObject)
             .then(taskJson => {
