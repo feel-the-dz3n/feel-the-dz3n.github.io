@@ -167,8 +167,8 @@ function changeTaskStatusEvent(event) {
             task.done = newStatus;
 
             putTaskRequest(task)
-                .then(newTask => {
-                    taskItemNode.outerHTML = taskToDom(newTask);
+                .then(newTaskJson => {
+                    taskItemNode.outerHTML = taskToDom(new Task(newTaskJson));
                 });
         })
         .catch(err => {
