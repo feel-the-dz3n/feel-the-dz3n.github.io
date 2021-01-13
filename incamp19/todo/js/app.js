@@ -1,10 +1,18 @@
 class Task {
-    constructor(id, name, done, description, dueDateTime) {
-        this.id = id;
-        this.name = name;
-        this.done = done;
-        this.description = description;
-        this.dueDateTime = dueDateTime;
+    constructor(idOrObject, name, done, description, dueDateTime) {
+        if (typeof idOrObject === 'object') {
+            Object.assign(this, idOrObject);
+        } else {
+            this.id = idOrObject;
+            this.name = name;
+            this.done = done;
+            this.description = description;
+            this.dueDateTime = dueDateTime;
+        }
+
+        if (this.name === "") {
+            throw new Error("Task's name can't be empty");
+        }
     }
 }
 
@@ -22,28 +30,21 @@ let tasks = [
     new Task(getId(), "Visit Doctor", false, null, new Date("12.02.2021 14:00")),
 ];
 
-function createTaskClick(event) {
-    let title = document.getElementById("new-task-title");
-    let description = document.getElementById("new-task-description");
-    let date = document.getElementById("new-task-date");
-
-    if (title.value !== "") {
-        console.log(date.value, new Date(date.value), getFormattedDate(new Date(date.value)));
-        let task = new Task(getId(), title.value, false, description.value, new Date(date.value));
-
+const createTaskForm = document.forms['add-task'];
+createTaskForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    try {
+        const formData = new FormData(createTaskForm);
+        const taskObject = Object.fromEntries(formData.entries());
+        const task = new Task(getId(), taskObject.name, false, taskObject.description, new Date(taskObject.dueDateTime));
         tasks.push(task);
         appendDomTask(task);
-
-        title.value = "";
-        description.value = "";
-        date.value = "";
-
         setModalVisible(false);
+        createTaskForm.reset();
+    } catch (e) {
+        alert(e);
     }
-    else {
-        alert('Enter the title.');
-    }
-}
+})
 
 function setModalVisible(visible) {
     let modalContent = document.querySelector(".modal-content");

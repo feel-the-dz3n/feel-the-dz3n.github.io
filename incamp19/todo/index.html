@@ -38,20 +38,20 @@
   </div>
   <button class="body__add-task-button" onclick="addTaskClickEvent(event)">➕</button>
   <div class="modal-content" onclick="hideModalEvent(event)">
-    <form class="add-task" onclick="event.stopPropagation()">
+    <form name='add-task' class="add-task" onclick="event.stopPropagation()">
       <h2 class="add-task__title">Create Task</h2>
       <div class="add-task__input">
-        <input id="new-task-title" placeholder="Title *">
+        <input name="name" placeholder="Title *">
       </div>
       <div class="add-task__input">
-        <input id="new-task-date" type="datetime-local" placeholder="Due Date">
+        <input name="dueDateTime" type="datetime-local" placeholder="Due Date">
       </div>
       <div class="add-task__input add-task__input_description">
-        <textarea id="new-task-description" placeholder="Description"></textarea>
+        <textarea name="description" placeholder="Description"></textarea>
       </div>
       <div class="add-task-buttons">
         <button class="add-task-buttons__button" type="button" onclick="hideModalEvent(event)">Cancel</button>
-        <button class="add-task-buttons__button" type="button" onclick="createTaskClick(event)">Create</button>
+        <button class="add-task-buttons__button" type="submit">Create</button>
       </div>
     </form>
   </div>
