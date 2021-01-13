@@ -1,34 +1,23 @@
+const tasksEndpoint = "http://127.0.0.1:8080/tasks"
+
 class Task {
-    constructor(idOrObject, name, done, description, dueDateTime) {
+    constructor(idOrObject, title, description, done, dueTime) {
         if (typeof idOrObject === 'object') {
             Object.assign(this, idOrObject);
+            this.dueTime = new Date(idOrObject.dueTime);
         } else {
             this.id = idOrObject;
-            this.name = name;
+            this.title = title;
             this.done = done;
             this.description = description;
-            this.dueDateTime = dueDateTime;
+            this.dueTime = dueTime;
         }
 
-        if (this.name === "") {
+        if (this.title === "") {
             throw new Error("Task's name can't be empty");
         }
     }
 }
-
-let lastId = 0;
-
-function getId() {
-    lastId++;
-    return lastId;
-}
-
-let tasks = [
-    new Task(getId(), "Feed The Cat", false, null, new Date("12.01.2021 14:00")),
-    new Task(getId(), "Buy Goods", false, "Bread, cat feed, mop", new Date("01.01.2021 14:00")),
-    new Task(getId(), "Wash The Car", true, null, new Date("12.05.2021 14:00")),
-    new Task(getId(), "Visit Doctor", false, null, new Date("12.02.2021 14:00")),
-];
 
 const createTaskForm = document.forms['add-task'];
 createTaskForm.addEventListener('submit', (event) => {
@@ -69,7 +58,7 @@ function addTaskClickEvent(event) {
 
 function isTaskOverdue(task) {
     let now = new Date();
-    return now > task.dueDateTime;
+    return now > task.dueTime;
 }
 
 function formatDateDigit(num) {
@@ -91,7 +80,7 @@ function getFormattedDate(date) {
 }
 
 function getTaskDueDateTime(task) {
-    let date = task.dueDateTime;
+    let date = task.dueTime;
     return getFormattedDate(date);
 }
 
@@ -104,10 +93,10 @@ function taskToDom(task) {
     html.push(`<div class='task-item__header'>`);
     html.push(`<div class='task-item__title-side-container'>`);
     html.push(`<input type="checkbox" class="task-item__doneCheckbox" onclick="changeTaskStatusEvent(event)" `, task.done ? `checked` : ``, `>`);
-    html.push(`<h3 class="task-item__name `, task.done ? `task-item__name_done` : ``, `">`, task.name, "</h3>");
+    html.push(`<h3 class="task-item__name `, task.done ? `task-item__name_done` : ``, `">`, task.title, "</h3>");
     html.push(`</div>`); // task-item__title-side-container
     html.push(`<div class='task-item__title-side-container'>`);
-    if (task.dueDateTime && !isNaN(task.dueDateTime)) {
+    if (task.dueTime && !isNaN(task.dueTime)) {
         html.push(`<div class="task-item__dueDateTime `, !task.done && isTaskOverdue(task) ? `task-item__dueDateTime_overdue` : ``, `">`, getTaskDueDateTime(task), "</div>");
     }
     html.push(`</div>`); // task-item__title-side-container
@@ -164,11 +153,13 @@ function refreshTasks() {
 
     document.getElementById("task-list").innerHTML = "";
 
-    for (let task of tasks) {
-        // if show all or show only incomplete
-        if (radioAll.checked || (radioIncomplete.checked && !task.done))
-            appendDomTask(task);
-    }
+    fetch(tasksEndpoint)
+        .then(response => response.json())
+        .then(tasks => tasks.forEach(function (taskJson) {
+            if (radioAll.checked || (radioIncomplete.checked && !task.done)) {
+                appendDomTask(new Task(taskJson));
+            }
+        }));
 }
 
 function setFilterCheck(id) {
