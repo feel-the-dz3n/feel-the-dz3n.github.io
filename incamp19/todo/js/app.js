@@ -137,15 +137,44 @@ function taskToDom(task) {
     return html.join("");
 }
 
+function putTaskRequest(task) {
+    return fetch(tasksEndpoint + `/${task.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(task)
+    }).then(handleErrorsGetJson);
+}
+
+function fetchTasksById(taskId) {
+    return fetch(tasksEndpoint + `/${taskId}`)
+        .then(handleErrorsGetJson);
+}
 
 function changeTaskStatusEvent(event) {
     let taskItemNode = event.target.parentNode.parentNode.parentNode;
     let taskId = taskItemNode.dataset.id;
+    let newStatus = event.target.checked;
 
-    let task = tasks.find(task => task.id == taskId);
-    task.done = !task.done;
+    event.target.classList.add("task-item__doneCheckbox_fetching");
 
-    taskItemNode.outerHTML = taskToDom(task);
+    fetchTasksById(taskId)
+        .then(task => {
+            task.done = newStatus;
+
+            putTaskRequest(task)
+                .then(newTask => {
+                    taskItemNode.outerHTML = taskToDom(newTask);
+                });
+        })
+        .catch(err => {
+            console.log(err);
+            alert("Something went wrong");
+            event.target.checked = !newStatus;
+
+            event.target.classList.remove("task-item__doneCheckbox_fetching");
+        });
 
     return false;
 }

@@ -37,6 +37,11 @@ textarea {
     text-align: center;
 }
 
+.task-item__doneCheckbox_fetching { 
+    pointer-events: none;
+    animation: flicker 500ms ease-in-out infinite;
+}
+
 .tasks-list {
     background: rgb(241, 241, 241);
     border-radius: 3px;
@@ -126,6 +131,15 @@ textarea {
     background: white;
     color: rgb(37, 37, 37);
     border: 1px solid rgb(199, 199, 199);
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 25%;
+    }
+    100% {
+        opacity: 50%;
+    }
 }
 
 @keyframes fadeIn {
