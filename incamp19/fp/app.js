@@ -19,6 +19,25 @@ const or = (pA, pB) => item => pA(item) || pB(item);
 const all = reduce(and, constTrue);
 const any = reduce(or, constFalse);
 
+const forEachFunc = func => funcs => funcs.forEach(func);
+const applyFunc = func => args => func.apply(null, args);
+const callFunc = func => args => func.call(null, args);
+
+const flow = (...funcs) => (...array) => { 
+    let result = applyFunc(funcs[0])(array); 
+    funcs.shift();
+    forEachFunc(func => { result = callFunc(func)(result); })(funcs); 
+    return result;
+}
+
+const flowOld = (...funcs) => (...array) => {
+    let result = funcs[0].apply(this, array);
+    for (let i = 1; i < funcs.length; i++)
+        result = funcs[i].call(this, result);
+
+    return result;
+}
+
 let hasColor = color => rectangle => rectangle.color == color;
 let isRed = hasColor('red');
 let isBlack = hasColor('black');
@@ -42,7 +61,7 @@ function maxBlackSquareAreaTest() {
         new Rectangle('black', 7, 7, 7, 7), // 49, expected result
         new Rectangle('red', 8, 8, 8, 8) // 64, not black
     ];
-    let findMaxBlackSquareArea = _.flow(
+    let findMaxBlackSquareArea = flow(
         collectBlackSquares,
         calcAreas,
         _.max);
@@ -65,7 +84,7 @@ function redRectsPerimeterTest() {
     ];
 
     // expected result = 10 + 18 + 20 = 48
-    let findRedRectsPerimeter = _.flow(
+    let findRedRectsPerimeter = flow(
         collectRedRects,
         calcPerimeters,
         _.sum
