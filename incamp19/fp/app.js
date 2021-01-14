@@ -24,14 +24,6 @@ const flow = (...funcs) => (array) => {
     return array;
 }
 
-const flowOld = (...funcs) => (...array) => {
-    let result = funcs[0].apply(this, array);
-    for (let i = 1; i < funcs.length; i++)
-        result = funcs[i].call(this, result);
-
-    return result;
-}
-
 let hasColor = color => rectangle => rectangle.color == color;
 let isRed = hasColor('red');
 let isBlack = hasColor('black');
