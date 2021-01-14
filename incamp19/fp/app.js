@@ -8,6 +8,17 @@ class Rectangle {
     }
 }
 
+const filter = predicate => list => list.filter(predicate);
+const map = predicate => list => list.map(predicate);
+const reduce = (previous, current) => list => list.reduce(previous, current);
+
+const constTrue = () => true;
+const constFalse = () => false;
+const and = (pA, pB) => item => pA(item) && pB(item);
+const or = (pA, pB) => item => pA(item) || pB(item);
+const all = reduce(and, constTrue);
+const any = reduce(or, constFalse);
+
 let hasColor = color => rectangle => rectangle.color == color;
 let isRed = hasColor('red');
 let isBlack = hasColor('black');
@@ -19,10 +30,9 @@ function hasColorTest() {
 }
 
 let isSquare = rect => rect.a == rect.b && rect.c == rect.d;
-const and = (pA, pB) => item => pA(item) && pB(item); 
-let calcArea = rect => rect.a * rect.a;
-let calcAreas = rects => rects.map(calcArea);
-let collectBlackSquares = rects => rects.filter(and(isBlack, isSquare));
+let calcArea = rect => rect.a * rect.b;
+let calcAreas = map(calcArea);
+let collectBlackSquares = filter(and(isBlack, isSquare));
 
 function maxBlackSquareAreaTest() {
     let figures = [
@@ -41,7 +51,7 @@ function maxBlackSquareAreaTest() {
     console.log("maxBlackSquareArea", maxBlackSquareArea);
 }
 
-let collectRedRects = rects => rects.filter(isRed);
+let collectRedRects = filter(isRed);
 let calcPerimeter = rect => rect.a + rect.b + rect.d + rect.c;
 let calcPerimeters = rects => rects.map(calcPerimeter);
 
