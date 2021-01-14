@@ -19,15 +19,9 @@ const or = (pA, pB) => item => pA(item) || pB(item);
 const all = reduce(and, constTrue);
 const any = reduce(or, constFalse);
 
-const forEachFunc = func => funcs => funcs.forEach(func);
-const applyFunc = func => args => func.apply(null, args);
-const callFunc = func => args => func.call(null, args);
-
-const flow = (...funcs) => (...array) => { 
-    let result = applyFunc(funcs[0])(array); 
-    funcs.shift();
-    forEachFunc(func => { result = callFunc(func)(result); })(funcs); 
-    return result;
+const flow = (...funcs) => (array) => { 
+    funcs.forEach(func => array = func(array));
+    return array;
 }
 
 const flowOld = (...funcs) => (...array) => {
