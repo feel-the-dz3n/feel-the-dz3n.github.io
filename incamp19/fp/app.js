@@ -19,8 +19,19 @@ const or = (pA, pB) => item => pA(item) || pB(item);
 const all = reduce(and, constTrue);
 const any = reduce(or, constFalse);
 
-const flow = (...funcs) => (array) => { 
-    funcs.forEach(func => array = func(array));
+const forEach = array => func => array.forEach(func);
+const forEachReversed = array => func => {
+    for (let i = array.length - 1; i >= 0; i--)
+        func(array[i]);
+}
+
+const flow = (...funcs) => (array) => {
+    forEach(funcs)(func => array = func(array));
+    return array;
+}
+
+const combine = (...funcs) => (array) => {
+    forEachReversed(funcs)(func => array = func(array))
     return array;
 }
 
@@ -70,15 +81,22 @@ function redRectsPerimeterTest() {
     ];
 
     // expected result = 10 + 18 + 20 = 48
-    let findRedRectsPerimeter = flow(
+    let findRedRectsPerimeterFlow = flow(
         collectRedRects,
         calcPerimeters,
         _.sum
     );
+    let findRedRectsPerimeterCombine = combine(
+        _.sum,
+        calcPerimeters,
+        collectRedRects
+    );
 
-    let redRectsPerimeter = findRedRectsPerimeter(figures);
+    let redRectsPerimeterFlow = findRedRectsPerimeterFlow(figures);
+    let redRectsPerimeterCombine = findRedRectsPerimeterCombine(figures);
 
-    console.log("redRectsPerimeterTest", redRectsPerimeter);
+    console.log("redRectsPerimeterFlow", redRectsPerimeterFlow);
+    console.log("redRectsPerimeterCombine", redRectsPerimeterCombine);
 }
 
 hasColorTest();
