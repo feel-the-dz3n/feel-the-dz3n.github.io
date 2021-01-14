@@ -25,14 +25,14 @@ const forEachReversed = array => func => {
         func(array[i]);
 }
 
-const flow = (...funcs) => (array) => {
-    forEach(funcs)(func => array = func(array));
-    return array;
+const flow = (...funcs) => (items) => {
+    forEach(funcs)(func => items = func(items));
+    return items;
 }
 
-const combine = (...funcs) => (array) => {
-    forEachReversed(funcs)(func => array = func(array))
-    return array;
+const combine = (...funcs) => (items) => {
+    forEachReversed(funcs)(func => items = func(items))
+    return items;
 }
 
 let hasColor = color => rectangle => rectangle.color == color;
