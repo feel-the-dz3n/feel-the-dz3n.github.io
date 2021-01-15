@@ -75,6 +75,19 @@ ul li {
     margin-bottom: 8px;
 }
 
+.section_full-page {
+    height: 100vh;
+    width: 100%;
+    background: rgb(224, 224, 224);
+    color: rgb(31, 31, 31);
+}
+
+.meme {
+    background-image: url('../img/meme.png');
+    background-size: cover;
+    height: 100vh;
+}
+
 /* wide screen */
 
 @media (min-width:600px) {
@@ -84,6 +97,9 @@ ul li {
     .section {
         display: block;
         width: 100%;
+    }
+    .section_full-page .section__content {
+        max-width: none;
     }
     .section__content {
         max-width: 500px;
